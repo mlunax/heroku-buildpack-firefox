@@ -52,7 +52,7 @@ case "$STACK" in
   "cedar-14")
     PACKAGES="libxss1"
     ;;
-  "heroku-16" | "heroku-18" || "heroku-20")
+  "heroku-16" | "heroku-18" | "heroku-20")
     PACKAGES="
       libappindicator1
       libasound2
