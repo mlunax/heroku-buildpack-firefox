@@ -113,7 +113,7 @@ for PACKAGE in $PACKAGES; do
     curl -s -L -z $PACKAGE_FILE -o $PACKAGE_FILE $PACKAGE 2>&1 | indent
   else
     topic "Fetching .debs for $PACKAGE"
-    apt-get $APT_OPTIONS -y --force-yes -d install --reinstall $PACKAGE | indent
+    apt-get $APT_OPTIONS -y --allow -d install --reinstall $PACKAGE | indent
   fi
 done
 
@@ -148,6 +148,7 @@ mkdir -p $CACHE_DIR/$ARCHIVE_NAME_GECKODRIVER
 mkdir -p $BUILD_DIR/vendor/$ARCHIVE_NAME_GECKODRIVER
 tar -xzf $CACHE_DIR/$FILE_NAME_GECKODRIVER -C $CACHE_DIR
 mv $CACHE_DIR/$ARCHIVE_NAME_GECKODRIVER $BUILD_DIR/vendor/$ARCHIVE_NAME_GECKODRIVER/
+chmod +x $BUILD_DIR/vendor/geckodriver
 
 topic "Setting paths"
 mkdir -p $BUILD_DIR/.profile.d
